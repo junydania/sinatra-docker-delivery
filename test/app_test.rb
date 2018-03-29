@@ -17,7 +17,7 @@ class AppTest < MiniTest::Test
   def test_hello_world
     get '/'
     assert last_response.ok?
-    assert_equal 'Hello World', last_response.body
+    assert_equal "Hello World to the Dania's family", last_response.body
   end
 
   def test_ping
