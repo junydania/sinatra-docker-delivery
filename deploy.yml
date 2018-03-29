@@ -28,7 +28,7 @@
       register: artifact_hash
 
     - name: Push Image to ECR
-      command: eval $(aws ecr get-login | sed 's|https://||')
+      command: eval $(aws ecr get-login --no-include-email --region us-east-1)
       command: "make push UPSTREAM={{ prereqs.stack_outputs.Repository }}:{{ artifact_hash.stdout }}"
       changed_when: False
 
