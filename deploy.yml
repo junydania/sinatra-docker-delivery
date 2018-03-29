@@ -18,7 +18,7 @@
         disable_rollback: true
         template: "cloudformation/prereqs.json"
         template_parameters:
-          BucketName: "{{ bucket_name }}"
+          BucketName: "odania-bucket"
           RepositoryName: "{{ app_name }}"
       register: prereqs
 

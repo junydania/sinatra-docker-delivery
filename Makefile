@@ -32,7 +32,7 @@ test-image: $(DOCKER)
 		ruby $(addprefix -r./,$(wildcard test/*_test.rb)) -e 'exit'
 
 .PHONY: test-ci
-test-ci: test-image
+test-ci: test-image test-cloudformation
 
 .PHONY: push
 push:
