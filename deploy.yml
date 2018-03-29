@@ -18,7 +18,7 @@
         disable_rollback: true
         template: "cloudformation/prereqs.json"
         template_parameters:
-          BucketName: "odania-bucket"
+          BucketName: "sinatra-bucket"
           RepositoryName: "{{ app_name }}"
       register: prereqs
 
@@ -28,6 +28,7 @@
       register: artifact_hash
 
     - name: Push Image to ECR
+      command: eval $(aws ecr get-login | sed 's|https://||')
       command: "make push UPSTREAM={{ prereqs.stack_outputs.Repository }}:{{ artifact_hash.stdout }}"
       changed_when: False
 
